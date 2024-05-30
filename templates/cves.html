@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <title>CVE DATA</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+
+
+    <body>
+
+        <div>
+            <h2>{{ cves_id }}</h2>
+        </div>
+
+        <div>
+            <h3>Description</h3>
+            <p>{{descriptions['value']}}</p>
+        </div>
+
+        <div>
+        {% if metricv3 %}
+        <h3>CVSS METRIC V3</h3>
+        <p>Severity : {{metricv3[0]['baseSeverity']}}</p>
+        <p>Score : {{metricv3[0]['baseScore']}}</p>
+        <p>Exploitability Score : {{metricv3[0]['exploitabilityScore']}}</p>
+        <p>Impact Score : {{metricv3[0]['impactScore']}}</p>
+        <p>Vector String : {{metricv3[0]['vectorString']}}</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Attack Vector</th>
+                    <th>Attack Complexity</th>
+                    <th>Priviledges</th>
+                    <th>Confidentiality Impact</th>
+                    <th>Integrity Impact</th>
+                    <th>Availability Impact</th>
+                    <th>Scope</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rows in metricv3 %}
+                    <tr>
+                        <td>{{ rows['attackVector'] }}</td>
+                        <td>{{ rows['attackComplexity'] }}</td>
+                        <td>{{ rows['privilegesRequired'] }}</td>
+                        <td>{{ rows['confidentialityImpact'] }}</td>
+                        <td>{{ rows['integrityImpact'] }}</td>
+                        <td>{{ rows['availabilityImpact'] }}</td>
+                        <td>{{ rows['scope'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        </div>
+
+
+        <div>
+        {% if metricv2 %}
+        <h3>CVSS METRIC V2</h3>
+        <p>Severity : {{ metricv2[0]['baseSeverity'] }}</p>
+        <p>Score : {{ metricv2[0]['baseScore'] }}</p>
+        <p>Exploitability Score : {{ metricv2[0]['exploitabilityScore'] }}</p>
+        <p>Impact Score : {{ metricv2[0]['impactScore'] }}</p>
+        <p>Vector String : {{ metricv2[0]['vectorString'] }}</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Access Vector</th>
+                    <th>Access Complexity</th>
+                    <th>Authentication</th>
+                    <th>Confidentiality Impact</th>
+                    <th>Integrity Impact</th>
+                    <th>Availability Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rows in metricv2 %}
+                    <tr>
+                        <td>{{ rows['accessVector'] }}</td>
+                        <td>{{ rows['accessComplexity'] }}</td>
+                        <td>{{ rows['authentication'] }}</td>
+                        <td>{{ rows['confidentialityImpact'] }}</td>
+                        <td>{{ rows['integrityImpact'] }}</td>
+                        <td>{{ rows['availabilityImpact'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        </div>
+
+        <div>
+            {% if cpe %}
+            <h3>CPE</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Match Criteria</th>
+                        <th>Vulnerable</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for rows in cpe %}
+                    <tr>
+                        <td>{{ rows['criteria'] }}</td>
+                        <td>{{ rows['matchCriteriaId'] }}</td>
+                        <td>{{ rows['vulnerable'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        </div>
+
+        <form action="/" method="get">
+            <button type="submit">Home</button>
+        </form>
+
+    </body>
+
+
+</html>

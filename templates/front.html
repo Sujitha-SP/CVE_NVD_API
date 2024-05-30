@@ -1,0 +1,88 @@
+<DOCTYPE !html>
+    <html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <title>CVE DATA</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <!--
+        <section>
+            <form action="/ChunkSelection" method="post">
+                <input type="number" name="chunkNumber" min="1" max="127">
+            </form>
+        </section>
+        -->
+        <section>
+            
+            <div>
+                <h2>Vulnerabilities</h2>
+
+
+                <div class="search-box">
+                    <form action="/filteringID" method="post">
+                        <input type="text" name="cves_id" placeholder="CVE-ID">
+                        <button type="submit">Search</button>
+                    </form>
+                    <form action="/filteringScore" method="post">
+                        <select id="scorename" name="metric_name">
+                            <option value="cvssmetricv2">version 2</option>
+                            <option value="cvssmetricv3">version 3</option>                
+                        </select>
+                        <select id="intervals" name="cves_score">
+                            <option value="0-2">0 to 2</option>
+                            <option value="2-4">2 to 4</option>
+                            <option value="4-6">4 to 6</option>
+                            <option value="6-8">6 to 8</option>
+                            <option value="8-10">8 to 10</option>
+                        </select>
+                        <button type="submit">Search</button>
+                    </form>
+                    <form action="/" method="get">
+                        <button type="submit">Clear</button>
+                    </form>
+            
+
+                    
+                </div>
+                <div>
+                <table>
+                    <thead>
+                        <tr>
+                            {% if recs %}
+                                    <th>ID</th>
+                                    <th>Source</th>
+                                    <th>Published</th>
+                                    <th>Last Modified</th>
+                                    <th>Vulnerability Status</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in recs %}
+                            <tr>
+                                {% for key, value in r.items() %}
+                                    {% if key=='id' %}
+                                        <td><a href="{{ url_for('cves_detail', cves_id=r['id']) }}">{{ value }}</a></td>
+                                    {% else %}
+                                        <td>{{ value }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+                <div>
+                    <form  action = "/nextPage" method="post">
+                        <button type="submit">NEXT</button> 
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+    </html>
+    </html>
+</DOCTYPE>

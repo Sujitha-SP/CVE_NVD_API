@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+h3 {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 25px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+/* Styling for paragraph elements */
+p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Styling for anchor (link) elements */
+a {
+    font-size: 16px;
+    font-weight: 15px;
+    color: #00172f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Styling for button elements */
+button {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"] {
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;      
+    margin: 10px 0;  /* Add margin for spacing outside the input field */
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the label */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+/* Styling for the select element */
+select {
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
